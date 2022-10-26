@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  monkey:
+    container_name: monkey
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./src:/go/src
