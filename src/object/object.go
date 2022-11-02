@@ -9,7 +9,7 @@ type ObjectType string
 const (
 	INTEGER_OBJ = "INTEGER"
 	BOOLEAN_OBJ = "BOOLEAN"
-	NULL_OBG = "NULL"
+	NULL_OBJ = "NULL"
 )
 
 type Object interface {
