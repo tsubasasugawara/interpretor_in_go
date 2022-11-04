@@ -182,10 +182,10 @@ func TestErrorHandling(t *testing.T) {
 			"true + false;",
 			"unknown operator: BOOLEAN + BOOLEAN",
 		},
-		// {
-		// 	"true + false + true + false;",
-		// 	"unknown operator: BOOLEAN + BOOLEAN",
-		// },
+		{
+			"true + false + true + false;",
+			"unknown operator: BOOLEAN + BOOLEAN",
+		},
 		{
 			"5; true + false; 5",
 			"unknown operator: BOOLEAN + BOOLEAN",
@@ -209,6 +209,10 @@ if (10 > 1) {
 		{
 			"foobar",
 			"identifier not found: foobar",
+		},
+		{
+			`"Hello" - "World"`,
+			"unknown operator: STRING - STRING",
 		},
 	}
 
@@ -299,6 +303,34 @@ addTwo(2);
 `
 
 	testIntegerObject(t, testEval(input), 4)
+}
+
+func TestStringLiteral(t *testing.T) {
+	input := `"Hello World!"`
+
+	evaluated := testEval(input)
+	str, ok := evaluated.(*object.String)
+	if !ok {
+		t.Fatalf("object is not String. got=%T (%+v)", evaluated, evaluated)
+	}
+
+	if str.Value != "Hello World!" {
+		t.Errorf("String has wrong value. got=%q", str.Value)
+	}
+}
+
+func TestStringConcatenation(t *testing.T) {
+	input := `"Hello" + " " + "World!"`
+
+	evaluated := testEval(input)
+	str, ok := evaluated.(*object.String)
+	if !ok {
+		t.Fatalf("object is not String. got=%T (%+v)", evaluated, evaluated)
+	}
+
+	if str.Value != "Hello World!" {
+		t.Errorf("String has wrong value. got=%q", str.Value)
+	}
 }
 
 func testEval(input string) object.Object {
