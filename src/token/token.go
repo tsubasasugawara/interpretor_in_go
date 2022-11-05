@@ -3,31 +3,32 @@ package token
 type TokenType string
 
 const (
-	ILLEGAL = "ILLEGAL"
-	EOF     = "EOF"
+	ILLEGAL		= "ILLEGAL"
+	EOF			= "EOF"
 
 	// Identifiers + literals
-	IDENT 	= "IDENT" // add, foobar, x, y, ...
-	INT   	= "INT"   // 1343456
-	STRING	= "STRING"
+	IDENT		= "IDENT" // add, foobar, x, y, ...
+	INT			= "INT"   // 1343456
+	STRING		= "STRING"
 
 	// Operators
-	ASSIGN   = "="
-	PLUS     = "+"
-	MINUS    = "-"
-	BANG     = "!"
-	ASTERISK = "*"
-	SLASH    = "/"
+	ASSIGN		= "="
+	PLUS		= "+"
+	MINUS		= "-"
+	BANG		= "!"
+	ASTERISK	= "*"
+	SLASH		= "/"
 
-	LT = "<"
-	GT = ">"
+	LT			= "<"
+	GT			= ">"
 
-	EQ     = "=="
-	NOT_EQ = "!="
+	EQ			= "=="
+	NOT_EQ		= "!="
 
 	// Delimiters
-	COMMA     = ","
-	SEMICOLON = ";"
+	COMMA		= ","
+	SEMICOLON	= ";"
+	COLON		= ":"
 
 	LPAREN		= "("
 	RPAREN		= ")"
@@ -37,13 +38,13 @@ const (
 	RBRACKET	= "]"
 
 	// Keywords
-	FUNCTION = "FUNCTION"
-	LET      = "LET"
-	TRUE     = "TRUE"
-	FALSE    = "FALSE"
-	IF       = "IF"
-	ELSE     = "ELSE"
-	RETURN   = "RETURN"
+	FUNCTION	= "FUNCTION"
+	LET			= "LET"
+	TRUE		= "TRUE"
+	FALSE		= "FALSE"
+	IF			= "IF"
+	ELSE		= "ELSE"
+	RETURN		= "RETURN"
 )
 
 type Token struct {
